@@ -14,11 +14,12 @@ knitr::opts_chunk$set(
 )
 ```
 
+# Introduction
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The potential relationship between microbiome and metabolome has been proved to impact seriously on the occurrence and progression of diseases. Meanwhile, more novel biomarkers have been identified from data comparing of humans and other species such as animals or plants, which provides new insights to human health and disease. However, there are no suitable dual-omics analysis strategies to select feature and group combining information from microbiome-metabolite data crossing species. Here we develop an R package, BiOFI, which first comes up with a comprehensive comparison of dual-omics profiles from different species based on microbiome-metabolite data. BiOFI offers five functions including Microbe pathway prediction, metabolite functional transformation, screening key nodes of microbiome-metabolome and related functions, identification of microorganisms and metabolites under the same functions and network construction, which are used to match microbes with pathways in KEGG, pre-process raw metabolite data, correlation analysis, key nodes screening and resulting visualization.   
+The potential relationship between microbiome and metabolome has been proved to impact seriously on the occurrence and progression of diseases. Meanwhile, more novel biomarkers have been identified from data comparing of humans and other species such as animals or plants, which provides new insights to human health and disease. However, there are no suitable dual-omics analysis strategies to select feature and group combining information from microbiome-metabolome data crossing species. Here we develop an R package, BiOFI, which first comes up with a comprehensive comparison of dual-omics profiles from different species based on microbiome-metabolite data. BiOFI offers five functions including Microbe pathway prediction, metabolite functional transformation, screening key nodes of microbiome-metabolome and related functions, identification of microorganisms and metabolites under the same functions and network construction, which are used to match microbes with pathways in KEGG, pre-process raw metabolite data, correlation analysis, key nodes screening and resulting visualization. 
 
 ## Installation
 
@@ -26,7 +27,7 @@ You can install the development version of BiOFI from [GitHub](https://github.co
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("Suntoa-hub/BiOFI")
+devtools::install_github("chentianlu/BiOFI")
 ```
 
 ## Example
