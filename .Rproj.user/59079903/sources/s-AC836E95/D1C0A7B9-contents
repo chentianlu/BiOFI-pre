@@ -1,0 +1,113 @@
+---
+title: "BiOFI:an R package for metabolomics and microbiomics feature identification"
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The potential relationship between microbiome and metabolome has been proved to impact seriously on the occurrence and progression of diseases. Meanwhile, more novel biomarkers have been identified from data comparing of humans and other species such as animals or plants, which provides new insights to human health and disease. However, there are no suitable dual-omics analysis strategies to select feature and group combining information from microbiome-metabolite data crossing species. Here we develop an R package, BiOFI, which first comes up with a comprehensive comparison of dual-omics profiles from different species based on microbiome-metabolite data. BiOFI offers five functions including Microbe pathway prediction, metabolite functional transformation, screening key nodes of microbiome-metabolome and related functions, identification of microorganisms and metabolites under the same functions and network construction, which are used to match microbes with pathways in KEGG, pre-process raw metabolite data, correlation analysis, key nodes screening and resulting visualization.   
+
+## Installation
+
+You can install the development version of BiOFI from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("Suntoa-hub/BiOFI")
+```
+
+## Example
+
+# `MicPathmatch`
+A funciton that is used to get pathways correspondent with the microbes in your own 16S or Metagenome data.The result includes two parts that one contains related detailed strain information and pathways of microbes, and the other only contains names of microbes you want to predict and related pathways. 
+
+An example of MicPathmatch:
+```{r,warning = FALSE,message = FALSE}
+library(BiOFI)
+data('Microbe_path_example')
+Mictopath <- MicPathmatch(Microbelist = Microbe_path_example)
+```
+
+# `Meta2pathway`
+A function that can transfer metabolite abundance into related pathway data.you can get data containing metabolite abundance and pathway that metabolites belong to.  
+Note: Please use C number in KEGG database to replace the metabolite names.For example, C00002 means ATP or Adenosine 5'-triphosphate in KEGG. Try your best to match the C number of metabolites for predicting pathway that metabolites belong to more accurately. if the metabolites do not have C numbers, keep the original names.  
+
+An example of Meta2pathway:  
+```{r,warning = FALSE,message = FALSE}
+data('Meta2pathway_example')
+Metaandpath <- Meta2pathway(MetaFrame = Meta2pathway_example)
+```
+
+# `IIS`
+A function that calculates and selects the key nodes,the formula of IIS is:
+               IIS= nDFS脳DFS + nDS脳DS+nES脳ES+nAS脳AS;
+nDFS,nDS,nES,nAS indict the weight value of DFS,DS,ES and AS, and nDFS+nDS+nES+nAS=1;
+DFS means Difference Score;
+DS means Degree Score;
+ES means Edge Score;
+AS means Abundance Score. 
+
+An example of IIS:  
+```{r,warning = FALSE,message = FALSE}
+data('Microbe_example')
+data('Meta_example')
+data('groupInfo')
+data('confounderData')
+IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,groupInfo = groupInfo)
+IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo) 
+```
+
+# `MMfunc`
+A function that selects microbe and metabolites on the same pathway based on the data of Nodescore.The result will be saved as HTML file.
+
+An example of MMfunc:  
+```{r,warning = FALSE,message = FALSE}
+data('Microbe_example')
+data('Meta_example')
+data('groupInfo')
+data('confounderData')
+IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo) 
+meta_mic2func <- MMfunc(IIScore)
+```
+
+# `TarNet`
+A function used to plot a network that consists of microbes and metabolites in same pathway.This function offers a network of microbes and metabolites in same pathways.
+
+An example of TarNet:  
+```{r,warning = FALSE,message = FALSE}
+data('Microbe_example')
+data('Meta_example')
+data('groupInfo')
+data('confounderData')
+IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo) 
+meta_mic2func <- MMfunc(IIScore)
+TarnetPairs <- TarNet(IIScore,meta_mic2func)
+```
+
+# `IPS`
+A function used to calculate the importance pair score (IPS) of a network based on the return of the TarNet function.
+
+An example of IPS:  
+```{r,warning = FALSE,message = FALSE}
+data('Microbe_example')
+data('Meta_example')
+data('groupInfo')
+data('confounderData')
+IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo) 
+meta_mic2func <- MMfunc(IIScore)
+TarnetPairs <- TarNet(IIScore,meta_mic2func)
+IPSres <- IPS(TarnetPairs,IIScore)
+```
