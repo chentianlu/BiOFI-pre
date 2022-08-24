@@ -15,8 +15,8 @@ IPS(TarnetPairs, IIS)
 A function used to calculate the importance pair score (IPS) of a network based on the return of the TarNet function.
 }
 \examples{
-IIScore=IIS(Microbe_example,Meta_example,confounderData,groupInfo)
-meta_mic2func=MMfunc(IIScore)
+IIScore=IIS(Microbe_example,Meta_example,confounderData,groupInfo,MMpath=MMpathway3)
+meta_mic2func=MMfunc(IIScore,MM2path=MMpathway,mic_pathways=pathlist)
 TarnetPairs=TarNet(IIScore,meta_mic2func)
 IPSres=IPS(TarnetPairs,IIScore)
 }

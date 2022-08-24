@@ -1,16 +1,16 @@
 ---
-title: "BiOFI:an R package for metabolomics and microbiomics feature identification"
-output: github_document
+title: "BiOFI"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{BiOFI}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  comment = "#>"
 )
 ```
 
@@ -54,7 +54,7 @@ Metaandpath <- Meta2pathway(MetaFrame = Meta2pathway_example)
 
 # `IIS`
 A function that calculates and selects the key nodes,the formula of IIS is:
-               IIS= nDFS脳DFS + nDS脳DS+nES脳ES+nAS脳AS;
+               IIS= nDFS×DFS + nDS×DS+nES×ES+nAS×AS;
 nDFS,nDS,nES,nAS indict the weight value of DFS,DS,ES and AS, and nDFS+nDS+nES+nAS=1;
 DFS means Difference Score;
 DS means Degree Score;
@@ -67,8 +67,7 @@ data('Microbe_example')
 data('Meta_example')
 data('groupInfo')
 data('confounderData')
-IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,groupInfo = groupInfo)
-IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo) 
+IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo,MMpath=MMpathway3) 
 ```
 
 # `MMfunc`
@@ -80,7 +79,7 @@ data('Microbe_example')
 data('Meta_example')
 data('groupInfo')
 data('confounderData')
-IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo) 
+IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo,MMpath=MMpathway3) 
 meta_mic2func <- MMfunc(IIScore)
 ```
 
@@ -93,7 +92,7 @@ data('Microbe_example')
 data('Meta_example')
 data('groupInfo')
 data('confounderData')
-IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo) 
+IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo,MMpath=MMpathway3) 
 meta_mic2func <- MMfunc(IIScore)
 TarnetPairs <- TarNet(IIScore,meta_mic2func)
 ```
@@ -107,7 +106,7 @@ data('Microbe_example')
 data('Meta_example')
 data('groupInfo')
 data('confounderData')
-IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo) 
+IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo,MMpath=MMpathway3) 
 meta_mic2func <- MMfunc(IIScore)
 TarnetPairs <- TarNet(IIScore,meta_mic2func)
 IPSres <- IPS(TarnetPairs,IIScore)

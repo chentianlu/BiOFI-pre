@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1661243206724.000,
+    "dirty" : false,
+    "encoding" : "CP936",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "16DC97DB",
+    "lastKnownWriteTime" : 1661246005,
+    "last_content_update" : 1661246005678,
+    "path" : "D:/job/IFS_IPS/Rpackage/BiOFI/R/IIS.R",
+    "project_path" : "R/IIS.R",
+    "properties" : {
+        "cursorPosition" : "33,3",
+        "scrollLine" : "16"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

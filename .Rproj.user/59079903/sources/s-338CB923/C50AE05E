@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1661302666169.000,
+    "dirty" : false,
+    "encoding" : "CP936",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C50AE05E",
+    "lastKnownWriteTime" : 1661303574,
+    "last_content_update" : 1661303574591,
+    "path" : "D:/job/IFS_IPS/Rpackage/BiOFI/R/Meta2pathway.R",
+    "project_path" : "R/Meta2pathway.R",
+    "properties" : {
+        "cursorPosition" : "18,3",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -5,7 +5,7 @@
 \alias{Meta2pathway_example}
 \title{Meta2pathway_example}
 \format{
-An object of class \code{data.frame} with 556 rows and 317 columns.
+An object of class \code{data.frame} with 30 rows and 45 columns.
 }
 \usage{
 Meta2pathway_example

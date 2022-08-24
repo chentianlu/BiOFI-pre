@@ -1,0 +1,76 @@
+#' @title Meta2pathway
+#' @description
+#' A function that can transfer metabolite abundance into related pathway data.
+#' using Meta2pathway you can get data containing metabolite abundance and pathway that metabolites belong to.
+#' Note: Please use C number in KEGG database to replace the metabolite names.For example, C00002 means ATP or Adenosine 5'-triphosphate in KEGG. Try your best
+#' to match the C number of metabolites for predicting pathway that metabolites belong to more accurately. if the metabolites do not have C numbers, keep the original names.
+#' See data example "Meta2pathway_example" for details.
+#'
+#' @param MetaFrame Metabolic data in csv format that includes Metabolite abundance.
+#' @param kg the built-in dataset includes metabolites and metabolic pathways.
+#' @return Metaandpath a data frame contained two parts which one is the pathway conversed and the other combines data from Metabolomics and pathway
+#' @export Meta2pathway
+#' @import tidyverse
+#' @importFrom  dplyr summarise_all
+#' @importFrom  dplyr summarise
+#' @importFrom  dplyr n
+#' @importFrom  dplyr group_by
+#' @examples
+#' Meta2pathway(Meta2pathway_example,KEGG)
+
+Meta2pathway<-function(MetaFrame,kg){
+  A=MetaFrame
+  ke2g=kg
+  # if(!file.exists("./results/Meta2pathway")){
+  #   dir.create("./results/Meta2pathway",recursive = T)
+  # }
+
+  KEGG_MetabolitesAndPathways=ke2g[,c(1,3)]
+  A2<-t(A)
+  A3<-data.frame()
+  for(i in rownames(A2)){
+    m1<-KEGG_MetabolitesAndPathways[which(KEGG_MetabolitesAndPathways$Compound==i),]
+    A3<-rbind(A3,m1)
+  }
+
+  A4<-as.data.frame(matrix(nrow=length(rownames(A3)),ncol = length(colnames(A2))))
+  colnames(A4)=colnames(A2)
+  A3<-cbind(A3,A4)
+  for(i in rownames(A2)){
+    for(j in 1:length(colnames(A2))){
+      A3[which(A3$Compound==i),j+2]=A2[i,j]
+    }
+  }
+
+  A3=A3[,-1]
+  by_pathway=group_by(A3,Pathway_Name)
+  A3<-as.data.frame(summarise_all(group_by(A3,Pathway_Name),sum))
+  rownames(A3)=A3[,1]
+  A3=A3[,-1]
+
+  rank=as.data.frame(summarise(by_pathway,rank=n()))
+  by_pathway2=group_by(KEGG_MetabolitesAndPathways,Pathway_Name)
+  rank2=as.data.frame(summarise(by_pathway2,rank=n()))
+
+  value=c()
+  a=c()
+  for(i in 1:length(rank$Pathway_Name)){
+    a[i]=rank$rank[i]/rank2[which(rank2$Pathway_Name==rank$Pathway_Name[i]),]$rank*100
+    value=append(value,a[i])
+  }
+  rankper<-data.frame(rank$Pathway_Name,value)
+
+
+  for(i in 1:length(rownames(A3))){
+
+    A3[i,]=A3[i,]/rankper[which(rankper$rank.Pathway_Name==rownames(A3)[i]),]$value
+  }
+
+  meta2path=t(A3)
+  A4=rbind(A2,A3)
+  Metaandpath=t(A4)
+  # write.csv(meta2path,file='./results/Meta2pathway/Metabolite to Pathways.csv')
+  # write.csv(Metaandpath,file='./results/Meta2pathway/Metabolite and Pathways.csv')
+  return(Metaandpath)
+}
+

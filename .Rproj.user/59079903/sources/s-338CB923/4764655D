@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1661303650903.000,
+    "dirty" : false,
+    "encoding" : "CP936",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "4764655D",
+    "lastKnownWriteTime" : 1661246334,
+    "last_content_update" : 1661246334,
+    "path" : "D:/job/IFS_IPS/Rpackage/BiOFI/R/MicPathmatch.R",
+    "project_path" : "R/MicPathmatch.R",
+    "properties" : {
+        "cursorPosition" : "22,3",
+        "scrollLine" : "10"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

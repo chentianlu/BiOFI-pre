@@ -4,10 +4,12 @@
 \alias{MicPathmatch}
 \title{MicPathmatch}
 \usage{
-MicPathmatch(Microbelist)
+MicPathmatch(Microbelist, mic_pathways)
 }
 \arguments{
 \item{Microbelist}{a list of microbe names in 16S or Metagenome data, and it does not contain the names of functional information in 16S or Metagenome data.}
+
+\item{mic_pathways}{the built-in dataset includes complete microbial pathways from kegg}
 }
 \value{
 Microberesult a list that contains two parts, one is a data frame that contains pathway and strains or sub-strains of microbes in the Microbelist
@@ -29,5 +31,5 @@ g means genus;
 s means species.
 }
 \examples{
-Micrest=MicPathmatch(Microbe_path_example)
+Micrest=MicPathmatch(Microbe_path_example,mic_pathways=pathlist)
 }

@@ -19,7 +19,7 @@ TarNet(IIScore, meta_mic2func, r = 0.1, p_adjust = 0.05)
 A function used to plot a network that consists of microbes and metabolites in same pathway.This function offers a network of microbes and metabolites in same pathways.
 }
 \examples{
-IIScore=IIS(Microbe_example,Meta_example,confounderData,groupInfo)
-meta_mic2func=MMfunc(IIScore)
+IIScore=IIS(Microbe_example,Meta_example,confounderData,groupInfo,MMpath=MMpathway3)
+meta_mic2func=MMfunc(IIScore,MM2path=MMpathway,mic_pathways=pathlist)
 TarNet(IIScore,meta_mic2func)
 }

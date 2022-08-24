@@ -15,7 +15,8 @@ IIS(
   nAS = 0.1,
   NS = 2.5,
   r = 0.5,
-  p_adjust = 0.05
+  p_adjust = 0.05,
+  MMpath
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ IIS(
 \item{r}{correlation coefficient of nodes.Default value is 0.9}
 
 \item{p_adjust}{p value the have been adjusted.Default value is 0.05}
+
+\item{MMpath}{the built-in dataset includes part of metabolic pathways and microbial pathways.}
 }
 \description{
 A function that calculates and selects the key nodes,the formula of IIS is:
@@ -51,6 +54,5 @@ ES means Edge Score;
 AS means Abundance Score.
 }
 \examples{
-IIScore=IIS(Microbe_example,Meta_example,groupInfo=groupInfo)
-IIScore=IIS(Microbe_example,Meta_example,confounderData,groupInfo) #if confongderData=Null
+IIScore=IIS(Microbe_example,Meta_example,confounderData,groupInfo,MMpath=MMpathway3)
 }

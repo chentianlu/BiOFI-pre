@@ -4,10 +4,12 @@
 \alias{Meta2pathway}
 \title{Meta2pathway}
 \usage{
-Meta2pathway(MetaFrame)
+Meta2pathway(MetaFrame, kg)
 }
 \arguments{
 \item{MetaFrame}{Metabolic data in csv format that includes Metabolite abundance.}
+
+\item{kg}{the built-in dataset includes metabolites and metabolic pathways.}
 }
 \value{
 Metaandpath a data frame contained two parts which one is the pathway conversed and the other combines data from Metabolomics and pathway
@@ -20,5 +22,5 @@ to match the C number of metabolites for predicting pathway that metabolites bel
 See data example "Meta2pathway_example" for details.
 }
 \examples{
-Meta2pathway(Meta2pathway_example)
+Meta2pathway(Meta2pathway_example,KEGG)
 }

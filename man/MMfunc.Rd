@@ -4,7 +4,7 @@
 \alias{MMfunc}
 \title{MMfunc}
 \usage{
-MMfunc(IIScore, NSpath = 2.5, NSmm = 2)
+MMfunc(IIScore, NSpath = 2.5, NSmm = 2, MM2path, mic_pathways)
 }
 \arguments{
 \item{IIScore}{the result using IIS() function.}
@@ -12,11 +12,15 @@ MMfunc(IIScore, NSpath = 2.5, NSmm = 2)
 \item{NSpath}{a number that represents the threshold value to select the pathways from the results of complete nodescores}
 
 \item{NSmm}{a number that represents the threshold value to select the Microbes/Metabolites from the results of complete nodescores}
+
+\item{MM2path}{the built-in dataset includes complete metabolic pathways and microbial pathways}
+
+\item{mic_pathways}{the built-in dataset includes complete microbial pathways from kegg}
 }
 \description{
 A function that selects microbe and metabolites on the same pathway based on the data of Nodescore.The result will be saved as HTML file.
 }
 \examples{
-IIScore=IIS(Microbe_example,Meta_example,confounderData,groupInfo)
-meta_mic2func=MMfunc(IIScore)
+IIScore=IIS(Microbe_example,Meta_example,confounderData,groupInfo,MMpath=MMpathway3)
+meta_mic2func=MMfunc(IIScore,MM2path=MMpathway,mic_pathways=pathlist)
 }
