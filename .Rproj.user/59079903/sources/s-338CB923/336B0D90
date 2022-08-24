@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1661305639232.000,
+    "dirty" : false,
+    "encoding" : "CP936",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "336B0D90",
+    "lastKnownWriteTime" : 1661303810,
+    "last_content_update" : 1661303810,
+    "path" : "D:/job/IFS_IPS/Rpackage/BiOFI/vignettes/BiOFI.Rmd",
+    "project_path" : "vignettes/BiOFI.Rmd",
+    "properties" : {
+        "cursorPosition" : "1,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

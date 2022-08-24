@@ -1,5 +1,4 @@
-BiOFI:an R package for metabolomics and microbiomics feature
-identification
+BiOFI
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -16,7 +15,7 @@ diseases. Meanwhile, more novel biomarkers have been identified from
 data comparing of humans and other species such as animals or plants,
 which provides new insights to human health and disease. However, there
 are no suitable dual-omics analysis strategies to select feature and
-group combining information from microbiome-metabolite data crossing
+group combining information from microbiome-metabolome data crossing
 species. Here we develop an R package, BiOFI, which first comes up with
 a comprehensive comparison of dual-omics profiles from different species
 based on microbiome-metabolite data. BiOFI offers five functions
@@ -52,7 +51,8 @@ An example of MicPathmatch:
 ``` r
 library(BiOFI)
 data('Microbe_path_example')
-Mictopath <- MicPathmatch(Microbelist = Microbe_path_example)
+data('pathlist')
+Micrest=MicPathmatch(Microbe_path_example,mic_pathways=pathlist)
 ```
 
 # `Meta2pathway`
@@ -70,7 +70,8 @@ An example of Meta2pathway:
 
 ``` r
 data('Meta2pathway_example')
-Metaandpath <- Meta2pathway(MetaFrame = Meta2pathway_example)
+data('KEGG')
+Metares=Meta2pathway(Meta2pathway_example,KEGG)
 ```
 
 # `IIS`
@@ -88,8 +89,8 @@ data('Microbe_example')
 data('Meta_example')
 data('groupInfo')
 data('confounderData')
-IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,groupInfo = groupInfo)
-IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo) 
+data('MMpathway3')
+IIScore=IIS(Microbe_example,Meta_example,confounderData,groupInfo,MMpath=MMpathway3)
 ```
 
 # `MMfunc`
@@ -104,8 +105,11 @@ data('Microbe_example')
 data('Meta_example')
 data('groupInfo')
 data('confounderData')
-IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo) 
-meta_mic2func <- MMfunc(IIScore)
+data('MMpathway3')
+data('MMpathway')
+data('pathlist')
+IIScore=IIS(Microbe_example,Meta_example,confounderData,groupInfo,MMpath=MMpathway3)
+meta_mic2func=MMfunc(IIScore,MM2path=MMpathway,mic_pathways=pathlist)
 ```
 
 # `TarNet`
@@ -121,8 +125,11 @@ data('Microbe_example')
 data('Meta_example')
 data('groupInfo')
 data('confounderData')
-IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo) 
-meta_mic2func <- MMfunc(IIScore)
+data('MMpathway3')
+data('MMpathway')
+data('pathlist')
+IIScore=IIS(Microbe_example,Meta_example,confounderData,groupInfo,MMpath=MMpathway3)
+meta_mic2func=MMfunc(IIScore,MM2path=MMpathway,mic_pathways=pathlist)
 TarnetPairs <- TarNet(IIScore,meta_mic2func)
 ```
 
@@ -138,8 +145,11 @@ data('Microbe_example')
 data('Meta_example')
 data('groupInfo')
 data('confounderData')
-IIScore <- IIS(Micro_path = Microbe_example,Meta_path = Meta_example,confounderData = confounderData,groupInfo = groupInfo) 
-meta_mic2func <- MMfunc(IIScore)
+data('MMpathway3')
+data('MMpathway')
+data('pathlist')
+IIScore=IIS(Microbe_example,Meta_example,confounderData,groupInfo,MMpath=MMpathway3)
+meta_mic2func=MMfunc(IIScore,MM2path=MMpathway,mic_pathways=pathlist)
 TarnetPairs <- TarNet(IIScore,meta_mic2func)
 IPSres <- IPS(TarnetPairs,IIScore)
 ```

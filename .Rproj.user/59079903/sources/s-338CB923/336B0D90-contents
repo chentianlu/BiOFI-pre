@@ -1,16 +1,16 @@
 ---
 title: "BiOFI"
-output: github_document
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{BiOFI}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  comment = "#>"
 )
 ```
 
@@ -56,7 +56,7 @@ Metares=Meta2pathway(Meta2pathway_example,KEGG)
 
 # `IIS`
 A function that calculates and selects the key nodes,the formula of IIS is:
-               IIS= nDFS×DFS + nDS×DS+nES×ES+nAS×AS;
+               IIS= nDFS脳DFS + nDS脳DS+nES脳ES+nAS脳AS;
 nDFS,nDS,nES,nAS indict the weight value of DFS,DS,ES and AS, and nDFS+nDS+nES+nAS=1;
 DFS means Difference Score;
 DS means Degree Score;
