@@ -9,22 +9,10 @@ BiOFI
 
 <!-- badges: end -->
 
-The potential relationship between microbiome and metabolome has been
-proved to impact seriously on the occurrence and progression of
-diseases. Meanwhile, more novel biomarkers have been identified from
-data comparing of humans and other species such as animals or plants,
-which provides new insights to human health and disease. However, there
-are no suitable dual-omics analysis strategies to select feature and
-group combining information from microbiome-metabolome data crossing
-species. Here we develop an R package, BiOFI, which first comes up with
-a comprehensive comparison of dual-omics profiles from different species
-based on microbiome-metabolite data. BiOFI offers five functions
-including Microbe pathway prediction, metabolite functional
-transformation, screening key nodes of microbiome-metabolome and related
-functions, identification of microorganisms and metabolites under the
-same functions and network construction, which are used to match
-microbes with pathways in KEGG, pre-process raw metabolite data,
-correlation analysis, key nodes screening and resulting visualization.
+Mounting evidences from fast-growing omics data have demonstrated the close association between metabolome and microbiome and the diverse roles of their interplay in disease and health. However, inferring reliable and driving associations faces multiple statistical challenges, given the inconsistent results from different methods, the many-to-many inter-/intra-associations among features, the insufficiently integrated analysis on composition and function, and the vast statistically significant but biologically unproved candidates. 
+Here we developed an R package, BiOFI, for metabolome and microbiome (Bi-omics) feature identification. It is able to screen out key/driving features (metabolites, microbes, and functions) by an integrated importance score (IIS), combining sub-scores derived from difference, correlation, abundance, and network analysis. It is able to identify microbe-function-metabolite chains and to rank association pairs within specific functions. Rich figures and tables are provided. 
+In summary, our strategy and R package provide an easy and powerful tool for the identification of robust features and correlations from big dual-omics data.
+
 
 ## Installation
 
